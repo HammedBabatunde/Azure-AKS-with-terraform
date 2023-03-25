@@ -22,6 +22,15 @@ Follow the steps below.
 ## Allow AKS to Pull images from ACR
 Run this command to allow AKS to pull images from ACR.
 
-` az aks update -n <aks-name> -g <resource-group> --attach-acr <acr-name>`
+1. `az aks get-credentials --resource-group <resource-group-name> --name <aks-name>`
+2. ` az aks update -n <aks-name> -g <resource-group> --attach-acr <acr-name>`
 
 ## Deploying a demo project
+cd into the Docker folder and run the following commands
+1. `docker build -t uberapp .`
+2. `docker tag uberapp <acr-name>.azurecr.io/uberapp`
+3. `docker push <acr-name>.azurecr.io/uberapp`
+
+cd into the kubernetes folder and run the following commands
+1. kubectl 
+2. `kubectl apply -f uberapp-deployment.yaml`
